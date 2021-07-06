@@ -18,6 +18,7 @@ qmk setup -H ~/Dev/repos/otann/qmk_firmware
 3. Link the layouts to the corresponding folders
 ```
 $ ln -s ~/Dev/repos/otann/qmk_layouts/preonic ~/Dev/repos/otann/qmk_firmware/keyboards/preonic/keymaps/otann
+$ ln -s ~/Dev/repos/otann/qmk_layouts/planck ~/Dev/repos/otann/qmk_firmware/keyboards/planck/keymaps/otann
 ```
 
 4. Build the firmware
@@ -31,4 +32,4 @@ $ qmk compile -kb preonic/rev3 -km otann
 
 ## Notes
 
-The puthon installation may fail, in that case installing virtualenv and getting the python `3.9.6`
+The puthon installation may fail, in that case installing virtualenv and getting the python `3.9.6` may help
