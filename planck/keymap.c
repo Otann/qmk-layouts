@@ -1,6 +1,7 @@
 /* Copyright 2021 Anton Chebotaev */
 
 #include QMK_KEYBOARD_H
+#include "config.h"
 
 enum planck_layers {
   _QWERTY,
@@ -15,9 +16,6 @@ enum planck_layers {
  *  Or you can use XXXXXXX for KC_NO (NOOP)                  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#define PERMISSIVE_HOLD    // https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#permissive-hold
-#define TAPPING_FORCE_HOLD // https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#tapping-force-hold
-
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define LOWER_T TG(_LOWER)
@@ -30,6 +28,7 @@ enum planck_layers {
 #define CMD_S_4 SCMD(KC_3)
 #define CMD_S_3 SCMD(KC_4)
 
+#define CTL_ESC MT(MOD_LCTL, KC_ESC)  // Esc on tap, Ctrl on hold
 #define SHFT_SP LSFT_T(KC_SPC)  // Space on tap, Shift on hold
 #define LANG_SW LALT(KC_SPC)    // my language switching combo
 #define MAC_PST QK_LSFT | QK_LALT | QK_LGUI | KC_V // mac os "paste without styles"
@@ -49,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_QWERTY] = LAYOUT_planck_mit(
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,   KC_U,    KC_I,     KC_O,    KC_P,    KC_BSPC,
-    KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,   KC_J,    KC_K,     KC_L,    KC_SCLN, KC_QUOT,
+    CTL_ESC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,   KC_J,    KC_K,     KC_L,    KC_SCLN, KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,   KC_M,    KC_COMM,  KC_DOT,  KC_UP,   KC_ENT,
     FN_GRV,  LANG_SW, KC_LCTL, KC_LALT, KC_LGUI, SHFT_SP,         LOWER,   RAISE ,   KC_LEFT, KC_DOWN, KC_RGHT
 ),
@@ -104,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_FN] = LAYOUT_planck_mit(
     RESET,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_DEL,
     XXXXXXX, XXXXXXX, XXXXXXX, CMD_S_3, CMD_S_4, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, M_PASTE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BRID, KC_BRIU,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MAC_PST, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BRID, KC_BRIU,
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPLY,          LOWER_T, RAISE_T, KC_VOLD, KC_MUTE, KC_VOLU
 )
 

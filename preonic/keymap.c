@@ -1,6 +1,7 @@
 /* Copyright 2021 Anton Chebotaev */
 
 #include QMK_KEYBOARD_H
+#include "config.h"
 
 enum preonic_layers {
   _QWERTY,
@@ -15,8 +16,6 @@ enum preonic_layers {
  *  Or you can use XXXXXXX for KC_NO (NOOP)                  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#define PERMISSIVE_HOLD    // https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#permissive-hold
-#define TAPPING_FORCE_HOLD // https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#tapping-force-hold
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
@@ -27,10 +26,11 @@ enum preonic_layers {
 #define PRV_TAB LCMD(KC_LCBR)
 #define NXT_TAB LCMD(KC_RCBR)
 #define CMD_ENT LCMD(KC_ENT)
-#define CMD_S_4 SCMD(KC_3)
-#define CMD_S_3 SCMD(KC_4)
+#define CMD_S_4 SCMD(KC_4)
+#define CMD_S_3 SCMD(KC_3)
 
-#define SHFT_SP LSFT_T(KC_SPC)  // Space on tap, Shift on hold
+#define CTL_ESC MT(MOD_LCTL, KC_ESC)  // Esc on tap, Ctrl on hold
+#define SHFT_SP MT(MOD_LSFT, KC_SPC)  // Space on tap, Shift on hold
 #define LANG_SW LALT(KC_SPC)    // my language switching combo
 #define MAC_PST QK_LSFT | QK_LALT | QK_LGUI | KC_V // mac os "paste without styles"
 
@@ -49,11 +49,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |  FN  |   /  |   ⌃  |   ⌥  |   ⌘  |    Space    |Lower |Raise | Left | Down |Right |
  * `-----------------------------------------------------------------------------------'
  */
-[_QWERTY] = LAYOUT_preonic_mit(
-    KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,   KC_U,    KC_I,     KC_O,    KC_P,    KC_BSPC,
-    KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,   KC_J,    KC_K,     KC_L,    KC_SCLN, KC_QUOT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,   KC_M,    KC_COMM,  KC_DOT,  KC_UP,   KC_ENT,
-    FN_GRV,  LANG_SW, KC_LCTL, KC_LALT, KC_LGUI, SHFT_SP,         LOWER,   RAISE ,   KC_LEFT, KC_DOWN, KC_RGHT
+[_QWERTY] = LAYOUT_preonic_grid(
+    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS,
+    KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+    CTL_ESC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,   KC_ENT,
+    FN_GRV,  LANG_SW, KC_LCTL, KC_LALT, KC_LGUI, SHFT_SP, SHFT_SP, LOWER,   RAISE ,  KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
 /* Lower
@@ -69,12 +70,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | TRNS |      | TRNS | TRNS | TRNS |    Enter    | TRNS |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
-[_LOWER] = LAYOUT_preonic_mit(
+[_LOWER] = LAYOUT_preonic_grid(
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS,
     XXXXXXX, KC_SLSH, KC_LBRC, KC_LPRN, KC_LCBR, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_GRV,
     _______, KC_BSLS, KC_RBRC, KC_RPRN, KC_RCBR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    _______, XXXXXXX, _______, _______, _______, KC_ENT,           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    _______, XXXXXXX, _______, _______, _______, KC_ENT,  KC_ENT,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
 /* Raise
@@ -90,12 +91,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | TRNS |      | TRNS | TRNS | TRNS |  Cmd-Enter  |      | TRNS |      |      |      |
  * `-----------------------------------------------------------------------------------'
   */
-[_RAISE] = LAYOUT_preonic_mit(
+[_RAISE] = LAYOUT_preonic_grid(
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PIPE,
-    XXXXXXX, KC_QUES, KC_LT,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, XXXXXXX,
+    XXXXXXX, KC_QUES, KC_LT,   KC_MINS, KC_EQL,  XXXXXXX, XXXXXXX, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, XXXXXXX,
     _______, KC_PIPE, KC_GT,   KC_UNDS, KC_PLUS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_QUES, XXXXXXX, XXXXXXX,
-    _______, XXXXXXX, _______, _______, _______, CMD_ENT,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    _______, XXXXXXX, _______, _______, _______, CMD_ENT, CMD_ENT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
 /* FN Layer
@@ -111,12 +112,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | TRNS |      |      |      |      |  play/pause |raiseT|lowerT| vol- | mute | vol+ |
  * `-----------------------------------------------------------------------------------'
  */
-[_FN] = LAYOUT_preonic_mit(
+[_FN] = LAYOUT_preonic_grid(
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     RESET,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_DEL,
     XXXXXXX, XXXXXXX, XXXXXXX, CMD_S_3, CMD_S_4, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, M_PASTE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BRID, KC_BRIU,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPLY,          LOWER_T, RAISE_T, KC_VOLD, KC_MUTE, KC_VOLU
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MAC_PST, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BRID, KC_BRIU,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPLY, KC_MPLY, LOWER_T, RAISE_T, KC_VOLD, KC_MUTE, KC_VOLU
 )
 
 };
