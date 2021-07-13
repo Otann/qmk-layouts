@@ -27,11 +27,11 @@ My layouts for Planck, Preonic and Drop Alt
 
 ### Planck
 
-![planck](/planck_glow.png)
+![planck](/planck.png)
 
 ### Preonic
 
-![preonic](/preonic_glow.png)
+![preonic](/preonic.png)
 
 ## How to build firmwares
 
