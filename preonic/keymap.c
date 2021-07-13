@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |      |      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |   \  |
+ * | TRNS |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |   \  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | TRNS |   /  |   [  |   (  |   {  |      |      | Left | Down |  Up  |Right |   `  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT_preonic_grid(
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS,
+    _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS,
     _______, KC_SLSH, KC_LBRC, KC_LPRN, KC_LCBR, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_GRV,
     _______, KC_BSLS, KC_RBRC, KC_RPRN, KC_RCBR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     _______, XXXXXXX, _______, _______, _______, KC_ENT,  KC_ENT,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
@@ -83,20 +83,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |      |      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |  &   |  *   |   (  |   )  |   |  |
+ * | TRNS |   !  |   @  |   #  |   $  |   %  |   ^  |  &   |  *   |   (  |   )  |   |  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |   ?  |   <  |   -  |   =  |      |      |      |      |      |      |   ~  |
+ * | TRNS |   ?  |   >  |   -  |   =  |      |      |      |      |      |      |   ~  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |   |  |   >  |   _  |   +  |      |      |      |      |      |      |      |
+ * | TRNS |   |  |   <  |   _  |   +  |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | TRNS |      | TRNS | TRNS | TRNS |  Cmd-Enter  |      | TRNS |      |      |      |
  * `-----------------------------------------------------------------------------------'
   */
 [_RAISE] = LAYOUT_preonic_grid(
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PIPE,
-    _______, KC_QUES, KC_LT,   KC_MINS, KC_EQL,  XXXXXXX, XXXXXXX, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_TILD,
-    _______, KC_PIPE, KC_GT,   KC_UNDS, KC_PLUS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_QUES, XXXXXXX, XXXXXXX,
+    _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PIPE,
+    _______, KC_QUES, KC_GT,   KC_MINS, KC_EQL,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_TILD,
+    _______, KC_PIPE, KC_LT,   KC_UNDS, KC_PLUS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     _______, XXXXXXX, _______, _______, _______, CMD_ENT, CMD_ENT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
