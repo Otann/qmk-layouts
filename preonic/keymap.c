@@ -29,9 +29,10 @@ enum preonic_layers {
 #define CMD_S_4 SCMD(KC_4)
 #define CMD_S_3 SCMD(KC_3)
 
-#define CTL_TAB MT(MOD_LCTL, KC_TAB)  // Esc on tap, Ctrl on hold
+#define OPT_ECS MT(MOD_LALT, KC_ESC)  // Esc on tap, Option on hold
+#define CTL_TAB MT(MOD_LCTL, KC_TAB)  // Tab on tap, Ctrl on hold
 #define SHFT_SP MT(MOD_LSFT, KC_SPC)  // Space on tap, Shift on hold
-#define LANG_SW LALT(KC_SPC)    // my language switching combo
+#define LANG_SW LALT(KC_SPC)          // my language switching combo
 #define MAC_PST QK_LSFT | QK_LALT | QK_LGUI | KC_V // mac os "paste without styles"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -51,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_QWERTY] = LAYOUT_preonic_grid(
     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS,
-    KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+    OPT_ECS, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     CTL_TAB, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,   KC_ENT,
     FN_GRV,  LANG_SW, KC_LCTL, KC_LALT, KC_LGUI, SHFT_SP, SHFT_SP, LOWER,   RAISE ,  KC_LEFT, KC_DOWN, KC_RGHT
@@ -105,19 +106,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |reset |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 | del  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      | ⇧⌘3  | ⇧⌘4  |      |      |      |      |      |      |      |
+ * | TRNS |      |      | ⇧⌘3  | ⇧⌘4  |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      | ⇧⌥⌘v |      |      |      |      |      |brgh- |brgh+ |
+ * | TRNS |      |      |      | ⇧⌥⌘v |      |      |      |      |      |brgh- |brgh+ |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |      |      |      |      |  play/pause |raiseT|lowerT| vol- | mute | vol+ |
+ * | TRNS |      | TRNS | TRNS | TRNS |  play/pause |raiseT|lowerT| vol- | mute | vol+ |
  * `-----------------------------------------------------------------------------------'
  */
 [_FN] = LAYOUT_preonic_grid(
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     RESET,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_DEL,
-    XXXXXXX, XXXXXXX, XXXXXXX, CMD_S_3, CMD_S_4, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MAC_PST, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BRID, KC_BRIU,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPLY, KC_MPLY, LOWER_T, RAISE_T, KC_VOLD, KC_MUTE, KC_VOLU
+    _______, XXXXXXX, XXXXXXX, CMD_S_3, CMD_S_4, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, MAC_PST, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BRID, KC_BRIU,
+    _______, XXXXXXX, _______, _______, _______, KC_MPLY, KC_MPLY, LOWER_T, RAISE_T, KC_VOLD, KC_MUTE, KC_VOLU
 )
 
 };
