@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  FN  |   /  |   ⌃  |   ⌥  |   ⌘  |    Space    |Lower |Raise | Left | Down |Right |
+ * |  FN  |  lng |   ⌃  |   ⌥  |   ⌘  |    Space    |Lower |Raise | Left | Down |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_preonic_grid(
