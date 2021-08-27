@@ -38,7 +38,8 @@ enum layers {
 
 #define OPT_TAB MT(MOD_LALT, KC_TAB)  // Tab on tap, Option on hold
 #define CTL_ESC MT(MOD_LCTL, KC_ESC)  // Esc on tap, Ctrl on hold
-#define SHFT_SP MT(MOD_LSFT, KC_SPC)  // Space on tap, Shift on hold
+#define SHT_SPC MT(MOD_LSFT, KC_SPC)  // Space on tap, Shift on hold
+#define SHT_ENT MT(MOD_LSFT, KC_ENT)  // Space on tap, Shift on hold
 #define LANG_SW LALT(KC_SPC)          // my language switching combo
 
 
@@ -49,18 +50,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-------------------------------------------.                             ,-------------------------------------------.
  * | Tab/⌥ |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |  Bksp  |
  * |-------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * | Esc/⌃ |   A  |   S  |   D  |   F  |   G  |                              |   H  |   J  |   K  |   L  |   ;  |    "   |
+ * | Esc/⌃ |   A  |   S  |   D  |   F  |   G  |                              |   H  |   J  |   K  |   L  |   ;  |    '   |
  * |-------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |   ⇧   |   Z  |   X  |   C  |   V  |   B  | Down |  Up  |  | Left | Right|   N  |   M  |   ,  |   .  | ru/en|  Enter |
  * `---------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                       |   ⌃  |   ⌥  |   ⌘  | Shift| Enter|  |Backsp| Space| Lower| Raise|  FN  |
+ *                       |   ⌃  |   ⌥  |   ⌘  | Enter|  Del |  |Backsp| Space| Lower| Raise|  FN  |
  *                       `----------------------------------'  `----------------------------------'
  */
     [_QWERTY] = LAYOUT(
       OPT_TAB, KC_Q,    KC_W,    KC_E,     KC_R,    KC_T,                                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
       CTL_ESC, KC_A,    KC_S,    KC_D,     KC_F,    KC_G,                                    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
       KC_LSFT, KC_Z,    KC_X,    KC_C,     KC_V,    KC_B, KC_DOWN, KC_UP,  KC_LEFT, KC_RGHT, KC_N,    KC_M,    KC_COMM, KC_DOT,  LANG_SW, KC_ENT,
-                              KC_LCTL,  KC_LALT, KC_LGUI, SHFT_SP, KC_ENT, KC_BSPC, KC_SPC,  LOWER,   RAISE,   FN
+                              KC_LCTL,  KC_LALT, KC_LGUI, SHT_ENT, KC_DEL, KC_BSPC, SHT_SPC, LOWER,   RAISE,   FN
     ),
 /*
  * Lower Layer: Symbols
@@ -76,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                       `----------------------------------'  `----------------------------------'
  */
     [_LOWER] = LAYOUT(
-      _______, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PERC,                                     KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_PLUS, _______,
+      _______, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PERC,                                     KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_PLUS, KC_DEL,
       _______, KC_QUES, KC_DLR,  KC_LPRN, KC_RPRN, XXXXXXX,                                     XXXXXXX, KC_LT,   KC_GT,   KC_MINS, KC_EQL,  KC_GRV,
       _______, KC_SLSH, KC_HASH, KC_LBRC, KC_RBRC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PIPE, KC_BSLS, KC_TILD, XXXXXXX, XXXXXXX,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
@@ -121,9 +122,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-    return update_tri_layer_state(state, _LOWER, _RAISE, _FUNCTION);
-}
+// This allows to turn on third layer, when previous two are active
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//     return update_tri_layer_state(state, _LOWER, _RAISE, _FUNCTION);
+// }
 
 #ifdef OLED_DRIVER_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
@@ -161,17 +163,17 @@ static void render_status(void) {
     // Host Keyboard Layer Status
     oled_write_P(PSTR("Layer: "), false);
     switch (get_highest_layer(layer_state)) {
-        case 0:
-            oled_write_P(PSTR("Default\n"), false);
+        case _QWERTY:
+            oled_write_P(PSTR("Qwerty\n"), false);
             break;
-        case 1:
-            oled_write_P(PSTR("1. Lower\n"), false);
+        case _RAISE:
+            oled_write_P(PSTR("Numbers + Nav\n"), false);
             break;
-        case 2:
-            oled_write_P(PSTR("2. Raise\n"), false);
+        case _LOWER:
+            oled_write_P(PSTR("Symbols\n"), false);
             break;
-        case 3:
-            oled_write_P(PSTR("3. FN\n"), false);
+        case _FUNCTION:
+            oled_write_P(PSTR("Function\n"), false);
             break;
         default:
             oled_write_P(PSTR("Undefined\n"), false);
@@ -192,6 +194,17 @@ void oled_task_user(void) {
     }
 }
 #endif
+
+// #ifdef RGBLIGHT_ENABLE
+// void keyboard_post_init_user(void) {
+//   rgblight_enable_noeeprom(); // Enables RGB, without saving settings
+//   rgblight_sethsv_noeeprom(HSV_PURPLE);
+//   rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+// }
+// #endif
+
+here
+
 
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
