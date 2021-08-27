@@ -6,32 +6,24 @@ My layouts for Planck, Preonic and Drop Alt
 
 - Preonic is just extended Planck for learning cureve and more confidence with typing passwords
   - do not put anything essential on the top row
-  - do not rely on muscle memory
+  - do not rely on muscle memory for the top row
 - Keep T-shaped arrows for now
-- Keep modifiers on the left hand to do shortcuts together with the mouse/touchpad
+- Keep Mac OS modifiers on the left hand to do shortcuts with right hand on the mouse/touchpad
 - Layers on the right thumb
-- Lower layer is for keys that are lower on a regular keyboard (top row, numbers and symbols)
-- Within layers context:
-  - Left hand is for characters: lower for brackets, raised for symbols
-  - Right hand is for navigation: regular arrows and vim-styled arrows for now
-- Prefer mnemonic over perceived comfort: more important to remember where the key is 
-  - question mark is under the exclamation mark
-  - back slash is under reular slash
-  - grave is raised quotes
-  - open brackets on main row, closing below them
-- Exception is made for often-used combos, prefer rolling over mnemonic, as it would get to muscle memory faster
-   - inverse `>` and `<` so `=>` and `->` would roll with strongest fingers
-- Make shift accessible on thumbs for faster typing, space on hold sounds like a compromise
+- Mirror modifiers on left-most coolumn to allow thumb-pinkey-letter cmobos `⌘⌥c` or `⌘⌃g`
+- Lower is for symbols, raised is for numbers and navigation. Allows for sequences without layer jiggle.
+- Alloow inward rolls (`()`, `{}`, `->`, `=>`)
+- Make shift accessible on thumb for faster typing, space-on-hold sounds like a compromise
 - Have all modifiers available in their pure form, without on-tap features
 - Bonus point: have a dedicated key for switching language
 
 ### Planck
 
-![planck](/planck.png)
+![planck](/planck/wallpaper.png)
 
 ### Preonic
 
-![preonic](/preonic.png)
+![preonic](/preonic/wallpaper.png)
 
 ## How to build firmwares
 
