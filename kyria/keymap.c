@@ -14,11 +14,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
+#include "config.h"
 
 enum layers {
     _QWERTY = 0,
-    _LOWER,
     _RAISE,
+    _LOWER,
     _FUNCTION
 };
 
@@ -59,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       OPT_TAB, KC_Q,    KC_W,    KC_E,     KC_R,    KC_T,                                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
       CTL_ESC, KC_A,    KC_S,    KC_D,     KC_F,    KC_G,                                    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
       KC_LSFT, KC_Z,    KC_X,    KC_C,     KC_V,    KC_B, KC_DOWN, KC_UP,  KC_LEFT, KC_RGHT, KC_N,    KC_M,    KC_COMM, KC_DOT,  LANG_SW, KC_ENT,
-                              KC_LCTL,  KC_LALT, KC_LGUI, SHFT_SP, KC_ENT, KC_BSPC, KC_SPC,  LOWER,   RAISE,   FN_GRV
+                              KC_LCTL,  KC_LALT, KC_LGUI, SHFT_SP, KC_ENT, KC_BSPC, KC_SPC,  LOWER,   RAISE,   FN
     ),
 /*
  * Lower Layer: Symbols
@@ -117,26 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, KC_F11,  KC_F12,  CMD_S_3, CMD_S_4, XXXXXXX,                                     RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI, RGB_MOD,  KC_MUTE,
       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BRID, KC_BRIU, KC_MPRV, KC_MNXT, XXXXXXX, RGB_SAD, RGB_HUD, RGB_VAD, RGB_RMOD, KC_VOLD,
                                  _______, _______, _______, _______, _______, KC_MPLY, _______, _______, _______, _______
-    ),
-// /*
-//  * Layer template
-//  *
-//  * ,-------------------------------------------.                              ,-------------------------------------------.
-//  * |        |      |      |      |      |      |                              |      |      |      |      |      |        |
-//  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
-//  * |        |      |      |      |      |      |                              |      |      |      |      |      |        |
-//  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
-//  * |        |      |      |      |      |      |      |      |  |      |      |      |      |      |      |      |        |
-//  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
-//  *                        |      |      |      |      |      |  |      |      |      |      |      |
-//  *                        `----------------------------------'  `----------------------------------'
-//  */
-//     [_LAYERINDEX] = LAYOUT(
-//       _______, _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______, _______,
-//       _______, _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______, _______,
-//       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-//                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
-//     ),
+    )
 };
 
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -179,17 +161,17 @@ static void render_status(void) {
     // Host Keyboard Layer Status
     oled_write_P(PSTR("Layer: "), false);
     switch (get_highest_layer(layer_state)) {
-        case _QWERTY:
+        case 0:
             oled_write_P(PSTR("Default\n"), false);
             break;
-        case _LOWER:
-            oled_write_P(PSTR("Lower\n"), false);
+        case 1:
+            oled_write_P(PSTR("1. Lower\n"), false);
             break;
-        case _RAISE:
-            oled_write_P(PSTR("Raise\n"), false);
+        case 2:
+            oled_write_P(PSTR("2. Raise\n"), false);
             break;
-        case _FUNCTION:
-            oled_write_P(PSTR("FN\n"), false);
+        case 3:
+            oled_write_P(PSTR("3. FN\n"), false);
             break;
         default:
             oled_write_P(PSTR("Undefined\n"), false);
