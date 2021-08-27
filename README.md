@@ -42,6 +42,7 @@ qmk setup -H ~/Dev/repos/otann/qmk_firmware
 ```
 $ ln -s ~/Dev/repos/otann/qmk_layouts/preonic ~/Dev/repos/otann/qmk_firmware/keyboards/preonic/keymaps/otann
 $ ln -s ~/Dev/repos/otann/qmk_layouts/planck ~/Dev/repos/otann/qmk_firmware/keyboards/planck/keymaps/otann
+$ ln -s ~/Dev/repos/otann/qmk_layouts/kyria ~/Dev/repos/otann/qmk_firmware/keyboards/kyria/keymaps/otann
 ```
 
 4. Build the firmware
