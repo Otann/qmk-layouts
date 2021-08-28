@@ -25,6 +25,10 @@ My layouts for Planck, Preonic and Drop Alt
 
 ![preonic](/preonic/wallpaper.png)
 
+### Kyria
+
+![kyria](/kyria/wallpaper.png)
+
 ## How to build firmwares
 
 1. Install QMK following the [official guide](https://docs.qmk.fm/#/newbs_getting_started)
