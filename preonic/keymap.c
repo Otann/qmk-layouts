@@ -30,7 +30,8 @@ enum preonic_layers {
 
 #define OPT_TAB MT(MOD_LALT, KC_TAB)  // Tab on tap, Option on hold
 #define CTL_ESC MT(MOD_LCTL, KC_ESC)  // Esc on tap, Ctrl on hold
-#define SHFT_SP MT(MOD_LSFT, KC_SPC)  // Space on tap, Shift on hold
+#define SHT_SPC MT(MOD_LSFT, KC_SPC)  // Space on tap, Shift on hold
+#define SHT_ENT MT(MOD_LSFT, KC_ENT)  // Space on tap, Shift on hold
 #define LANG_SW LALT(KC_SPC)          // my language switching combo
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -53,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     OPT_TAB, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     CTL_ESC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,   KC_ENT,
-    FN_GRV,  LANG_SW, KC_LCTL, KC_LALT, KC_LGUI, SHFT_SP, SHFT_SP, LOWER,   RAISE ,  KC_LEFT, KC_DOWN, KC_RGHT
+    FN_GRV,  LANG_SW, KC_LCTL, KC_LALT, KC_LGUI, SHT_ENT, SHT_SPC, LOWER,   RAISE ,  KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
 /* Lower
@@ -120,3 +121,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 )
 
 };
+
+#ifdef RGBLIGHT_ENABLE
+void keyboard_post_init_user(void) {
+  rgblight_enable_noeeprom(); // Enables RGB, without saving settings
+  rgblight_sethsv_noeeprom(HSV_PURPLE);
+  rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+}
+#endif
