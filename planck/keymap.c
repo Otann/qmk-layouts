@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     OPT_TAB, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     CTL_ESC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,   KC_ENT,
-    FN_GRV,  LANG_SW, KC_LCTL, KC_LALT, KC_LGUI, SHT_ENT, SHT_SPC, LOWER,   RAISE ,  KC_LEFT, KC_DOWN, KC_RGHT
+    FN_GRV,  LANG_SW, KC_LCTL, KC_LALT, KC_LGUI, SHT_ENT, KC_SPC,  LOWER,   RAISE ,  KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
 /* Lower
@@ -98,14 +98,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | TRNS |      |      |      |      |      |      |      |      |      |brgh- |brgh+ |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |      | TRNS | TRNS | TRNS | play | next |raiseT|lowerT| vol- | mute | vol+ |
+ * | TRNS |      | TRNS | TRNS | TRNS |      |      |raiseT|lowerT| vol- | mute | vol+ |
  * `-----------------------------------------------------------------------------------'
  */
 [_FN] = LAYOUT_planck_grid(
     RESET,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_DEL,
     _______, KC_F11,  KC_F12,  CMD_S_3, CMD_S_4, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG,
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BRID, KC_BRIU,
-    _______, XXXXXXX, _______, _______, _______, KC_MPLY, KC_MNXT, LOWER_T, RAISE_T, KC_VOLD, KC_MUTE, KC_VOLU
+    _______, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX, LOWER_T, RAISE_T, KC_VOLD, KC_MUTE, KC_VOLU
 )
 
 };
