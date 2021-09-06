@@ -56,19 +56,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
- * | TRNS |   !  |   @  |   {  |   }  |   %  |   ^  |  &   |  *   |   _  |   +  | TRNS |
+ * | TRNS |   !  |   @  |   {  |   }  |   %  |   ^  |  &   |  *   |   -  |   =  | TRNS |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |   ?  |   $  |   (  |   )  |      |      |  <   |  >   |   -  |   =  |   `  |
+ * | TRNS |   ?  |   $  |   (  |   )  |   <  |   >  | Left | Down |  Up  |Right |   `  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |   /  |   #  |   [  |   ]  |      |      |  |   |  \   |   ~  |      |      |
+ * | TRNS |   /  |   #  |   [  |   ]  |      |   ~  |  |   |  \   |   _  |   +  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | TRNS |      | TRNS | TRNS | TRNS | TRNS | TRNS |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_planck_grid(
-    _______, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_PLUS, _______,
-    _______, KC_QUES, KC_DLR,  KC_LPRN, KC_RPRN, XXXXXXX, XXXXXXX, KC_LT,   KC_GT,   KC_MINS, KC_EQL,  KC_GRV,
-    _______, KC_SLSH, KC_HASH, KC_LBRC, KC_RBRC, XXXXXXX, XXXXXXX, KC_PIPE, KC_BSLS, KC_TILD, XXXXXXX, XXXXXXX,
+    _______, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_MINS, KC_EQL,  _______,
+    _______, KC_QUES, KC_DLR,  KC_LPRN, KC_RPRN, KC_LT,   KC_GT,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_GRV,
+    _______, KC_SLSH, KC_HASH, KC_LBRC, KC_RBRC, XXXXXXX, KC_TILD, KC_PIPE, KC_BSLS, KC_UNDS, KC_PLUS, XXXXXXX,
     _______, XXXXXXX, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
@@ -76,17 +76,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * | TRNS |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | TRNS |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |      |      |      |      |      |      | Left | Down |  Up  |Right |      |
+ * | TRNS |      |      |      |      |      |      |   4  |   5  |   6  |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |      |      |      |      |      |      |      |      |      |      |      |
+ * | TRNS |      |      |      |      |      |      |   1  |   2  |   3  |      | TRNS |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | TRNS |      | TRNS | TRNS | TRNS | TRNS | TRNS |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
   */
 [_RAISE] = LAYOUT_planck_grid(
     _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX, XXXXXXX,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX, _______,
     _______, XXXXXXX, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 

@@ -19,6 +19,9 @@ My layouts for Planck, Preonic and Drop Alt
 
 ### Planck
 
+Planck layout is also an experimental playground for trying new ideas.
+So it may be a little bit different or ahead of preonic.
+
 ![planck](/planck/wallpaper.png)
 
 ### Preonic
