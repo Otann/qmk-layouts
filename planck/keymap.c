@@ -49,14 +49,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  FN  | COLE |   ⌃  |   ⌥  |   ⌘  |Enter |Space |Lower |Raise | Left | Down |Right |
+ * |  FN  | lngs |   ⌃  |   ⌥  |   ⌘  |Enter |Space |Lower |Raise | Left | Down |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_planck_grid(
     OPT_TAB, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     CTL_ESC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,   KC_ENT,
-    FN_GRV,  T_COLEM, KC_LCTL, KC_LALT, KC_LGUI, SHT_ENT, SHT_SPC, LOWER,   RAISE ,  KC_LEFT, KC_DOWN, KC_RGHT
+    FN_GRV,  LANG_SW, KC_LCTL, KC_LALT, KC_LGUI, SHT_ENT, KC_SPC,  LOWER,   RAISE ,  KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
 /* Colemak DH 
@@ -67,14 +67,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   D  |   V  |   K  |   H  |   ,  |   .  |  Up  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  FN  | QWER |   ⌃  |   ⌥  |   ⌘  |Enter |Space |Lower |Raise | Left | Down |Right |
+ * |  FN  | lngs |   ⌃  |   ⌥  |   ⌘  |Enter |Space |Lower |Raise | Left | Down |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK_DH] = LAYOUT_planck_grid(
     OPT_TAB, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
     CTL_ESC, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_UP,   KC_ENT,
-    FN_GRV,  T_QWERT, KC_LCTL, KC_LALT, KC_LGUI, SHT_ENT, KC_SPC,  LOWER,   RAISE ,  KC_LEFT, KC_DOWN, KC_RGHT
+    FN_GRV,  LANG_SW, KC_LCTL, KC_LALT, KC_LGUI, SHT_ENT, KC_SPC,  LOWER,   RAISE ,  KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
 /* Lower
@@ -85,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | TRNS |   /  |   #  |   [  |   ]  |   ~  |   \  |  ¨   |  |   |   _  |   +  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS | lng  | TRNS | TRNS | TRNS | TRNS | TRNS |      |      |      |      |      |
+ * | TRNS | lngs | TRNS | TRNS | TRNS | TRNS | TRNS |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_planck_grid(
@@ -121,14 +121,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | TRNS | prev | pause| next | mute | vol- | vol+ |      |      |      |brgh- |brgh+ |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |      | TRNS | TRNS | TRNS | TRNS | TRNS |raiseT|lowerT|      |      |      |
+ * | TRNS |      | TRNS | TRNS | TRNS | TRNS | TRNS |raiseT|lowerT|      |COLEM |QWERT |
  * `-----------------------------------------------------------------------------------'
  */
 [_FN] = LAYOUT_planck_grid(
     RESET,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_DEL,
     _______, KC_F11,  KC_F12,  CMD_S_3, CMD_S_4, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG,
     _______, KC_VOLD, KC_MUTE, KC_VOLU, KC_MPLY, KC_MPRV, KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX, KC_BRID, KC_BRIU,
-    _______, XXXXXXX, _______, _______, _______, _______, _______, LOWER_T, RAISE_T, XXXXXXX, XXXXXXX, XXXXXXX
+    _______, XXXXXXX, _______, _______, _______, _______, _______, LOWER_T, RAISE_T, XXXXXXX, T_COLEM, T_QWERT
 )
 
 };
@@ -136,6 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef RGBLIGHT_ENABLE
 
 #define MY_HSV_PURPLE 200, 255, 255
+#define MY_HSV_BLUE 150, 255, 255
 #define MY_HSV_GREEN 85, 255, 255
 #define MY_HSV_ORANGE 30, 255, 255
 #define MY_HSV_WHITE 0, 0, 255
@@ -147,32 +148,31 @@ void keyboard_post_init_user(void) {
 }
 
 layer_state_t default_layer_state_set_user(layer_state_t state) {
-    switch (get_highest_layer(state)) {
-    case _COLEMAK_DH:
-        rgblight_sethsv_noeeprom(MY_HSV_GREEN);
-        break;
-    default: //  for any other layers, or the default layer
-        rgblight_sethsv_noeeprom(MY_HSV_PURPLE);
-        break;
-    }
+  if (IS_LAYER_ON_STATE(state, _COLEMAK_DH)) {
+      rgblight_sethsv_noeeprom(MY_HSV_GREEN);    
+  } else {
+      rgblight_sethsv_noeeprom(MY_HSV_PURPLE);    
+  }        
   return state;
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    switch (get_highest_layer(state)) {
-    case _LOWER:
-        rgblight_sethsv_noeeprom(MY_HSV_ORANGE);
-        break;
-    case _RAISE:
-        rgblight_sethsv_noeeprom(MY_HSV_ORANGE);
-        break;
-    case _FN:
-        rgblight_sethsv_noeeprom(MY_HSV_WHITE);
-        break;
-    default: //  for any other layers, or the default layer
-        rgblight_sethsv_noeeprom(MY_HSV_PURPLE);
-        break;
-    }
+  switch (get_highest_layer(state)) {
+  case _LOWER:
+      rgblight_sethsv_noeeprom(MY_HSV_BLUE); break;
+  case _RAISE:
+      rgblight_sethsv_noeeprom(MY_HSV_BLUE); break;
+  case _FN:
+      rgblight_sethsv_noeeprom(MY_HSV_WHITE); break;      
+  default:
+    switch (biton32(default_layer_state)) {
+      case _COLEMAK_DH:
+        rgblight_sethsv_noeeprom(MY_HSV_GREEN); break;
+      default:
+        rgblight_sethsv_noeeprom(MY_HSV_PURPLE);  break;
+      }
+    break;
+  }
   return state;
 }
 #endif
