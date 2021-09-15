@@ -33,8 +33,8 @@ enum planck_layers {
 #define CMD_S_3 SCMD(KC_3)
 #define UMLAUT  LALT(KC_U)
 
-#define OPT_TAB MT(MOD_LALT, KC_TAB)  // Tab on tap, Option on hold
-#define CTL_ESC MT(MOD_LCTL, KC_ESC)  // Esc on tap, Ctrl on hold
+#define OPT_ESC MT(MOD_LALT, KC_ESC)  // Esc on tap, Option on hold
+#define CTL_TAB MT(MOD_LCTL, KC_TAB)  // Tab on tap, Ctrl on hold
 #define SHT_SPC MT(MOD_LSFT, KC_SPC)  // Space on tap, Shift on hold
 #define SHT_ENT MT(MOD_LSFT, KC_ENT)  // Enter on tap, Shift on hold
 #define LANG_SW LALT(KC_SPC)          // my language switching combo
@@ -49,14 +49,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  FN  | lngs |   ⌃  |   ⌥  |   ⌘  |Enter |Space |Lower |Raise | Left | Down |Right |
+ * |  FN  | lngs |   ⌃  |   ⌥  |   ⌘  |Shift |Space |Lower |Raise | Left | Down |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_planck_grid(
-    OPT_TAB, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-    CTL_ESC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+    OPT_ESC, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+    CTL_TAB, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,   KC_ENT,
-    FN_GRV,  LANG_SW, KC_LCTL, KC_LALT, KC_LGUI, SHT_ENT, KC_SPC,  LOWER,   RAISE ,  KC_LEFT, KC_DOWN, KC_RGHT
+    FN_GRV,  LANG_SW, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, KC_SPC,  LOWER,   RAISE ,  KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
 /* Colemak DH 
@@ -67,14 +67,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   D  |   V  |   K  |   H  |   ,  |   .  |  Up  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  FN  | lngs |   ⌃  |   ⌥  |   ⌘  |Enter |Space |Lower |Raise | Left | Down |Right |
+ * |  FN  | lngs |   ⌃  |   ⌥  |   ⌘  |Shift |Space |Lower |Raise | Left | Down |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK_DH] = LAYOUT_planck_grid(
-    OPT_TAB, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-    CTL_ESC, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
+    OPT_ESC, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
+    CTL_TAB, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_UP,   KC_ENT,
-    FN_GRV,  LANG_SW, KC_LCTL, KC_LALT, KC_LGUI, SHT_ENT, KC_SPC,  LOWER,   RAISE ,  KC_LEFT, KC_DOWN, KC_RGHT
+    FN_GRV,  LANG_SW, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, KC_SPC,  LOWER,   RAISE ,  KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
 /* Lower
@@ -85,14 +85,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | TRNS |   /  |   #  |   [  |   ]  |   ~  |   \  |  ¨   |  |   |   _  |   +  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS | lngs | TRNS | TRNS | TRNS | TRNS | TRNS |      |      |      |      |      |
+ * | TRNS | lngs | TRNS | TRNS | TRNS |Enter | TRNS |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_planck_grid(
     _______, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_MINS, KC_EQL,  _______,
     _______, KC_QUES, KC_DLR,  KC_LPRN, KC_RPRN, KC_LT,   KC_GT,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_GRV,
     _______, KC_SLSH, KC_HASH, KC_LBRC, KC_RBRC, KC_TILD, KC_BSLS, UMLAUT,  KC_PIPE, KC_UNDS, KC_PLUS, XXXXXXX,
-    _______, LANG_SW, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    _______, LANG_SW, _______, _______, _______, KC_ENT,  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
 /* Raise
