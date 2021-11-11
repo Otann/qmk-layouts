@@ -48,7 +48,7 @@ So it may be a little bit different or ahead of preonic.
 
 ![preonic](/preonic/wallpaper.png)
 
-### Kyria (not completer)
+### ~Kyria~ (abandoned)
 
 I got stuck with my poor soldering skill and never achievet the reliable bild.
 Every attempt to solder it properly ended with one or more keys getting stuck and producing an unexpected
