@@ -17,139 +17,163 @@ enum preonic_layers {
  *  Or you can use XXXXXXX for KC_NO (NOOP)                  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+enum my_keycodes {
+  FOO = SAFE_RANGE,
+  BAR
+};
+
+
+// Layer switching
+#define FN MO(_FN)
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define LOWER_T TG(_LOWER)
 #define RAISE_T TG(_RAISE)
-
-#define FN_GRV LT(_FN, KC_GRV)
 #define LFT_RSE LT(_RAISE, KC_LEFT)
+#define FN_TAB LT(_FN, KC_TAB)
 
 #define T_QWERT DF(_QWERTY)
 #define T_COLEM DF(_COLEMAK_DH)
 
+// Pre-baked shortcuts
+#define EMOJI   C(G(KC_SPC))
 #define PRV_TAB LCMD(KC_LCBR)
 #define NXT_TAB LCMD(KC_RCBR)
 #define CMD_ENT LCMD(KC_ENT)
 #define CMD_S_4 SCMD(KC_4)
 #define CMD_S_3 SCMD(KC_3)
+#define LANG_SW LALT(KC_SPC)          // my language switching combo
 #define UMLAUT  LALT(KC_U)
 
+// Dual modifier?
+#define SHT_CMD OSM(MOD_LSFT | MOD_LGUI)
+#define SHT_OPT OSM(MOD_LSFT | MOD_LALT)
+#define OSM_SHT OSM(MOD_LSFT)
+#define OSM_CMD OSM(MOD_LGUI)
+#define OSM_OPT OSM(MOD_LALT)
+
+// Dual-role kombos
+#define SHT_GRV MT(MOD_LSFT, KC_GRV)  // `   on tap, Shift on hold
 #define OPT_TAB MT(MOD_LALT, KC_TAB)  // Tab on tap, Option on hold
 #define CTL_ESC MT(MOD_LCTL, KC_ESC)  // Esc on tap, Ctrl on hold
+#define OPT_ESC MT(MOD_LALT, KC_ESC)  // Tab on tap, Option on hold
+#define CTL_TAB MT(MOD_LCTL, KC_TAB)  // Esc on tap, Ctrl on hold
 #define SHT_SPC MT(MOD_LSFT, KC_SPC)  // Space on tap, Shift on hold
-#define SHT_ENT MT(MOD_LSFT, KC_ENT)  // Space on tap, Shift on hold
-#define LANG_SW LALT(KC_SPC)          // my language switching combo
+#define SHT_ENT MT(MOD_LSFT, KC_ENT)  // Enter on tap, Shift on hold
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty 
- * ,-----------------------------------------------------------------------------------.
- * |  ⌘{  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |  ⌘}  |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   ↲  |   ⇧  |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  FN  | lngs |   ⌃  |   ⌥  |   ⌘  |   ⇧  | space|   ↙︎  | ↗︎ /← |   ↓  |   ↑  |   →  |
- * `-----------------------------------------------------------------------------------'
+ * ,-----------------------------------------------------------------------------------------------.
+ * |   1   |   2   |   3   |   4   |   5   | tab<  | tab>  |   6   |   7   |   8   |   9   |   0   |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * |   Q   |   W   |   E   |   R   |   T   |   [   |   ]   |   Y   |   U   |   I   |   O   |   P   |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * |   A   |   S   |   D   |   F   |   G   |   -   |   =   |   H   |   J   |   K   |   L   |   ;   |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * |   Z   |   X   |   C   |   V   |   B   |   `   |   '   |   N   |   M   |   ,   |   .   |   /   |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * | FNtab | ⌃/esc |   ⌥   |   ⌘   |   ⇧   |   ⇧   | space | space |   ↙︎   |   ↗︎   |  lang |   ↲   |
+ * `-----------------------------------------------------------------------------------------------'
   */
 [_QWERTY] = LAYOUT_preonic_grid(
-    PRV_TAB, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    NXT_TAB,
-    OPT_TAB, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-    CTL_ESC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_ENT,  KC_RSFT,
-    FN_GRV,  LANG_SW, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, KC_SPC,  LOWER,   LFT_RSE, KC_DOWN, KC_UP,   KC_RGHT
-),
-
-/* Colemak DH 
- * ,-----------------------------------------------------------------------------------.
- * |  ⌘{  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |  ⌘}  |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |   Q  |   W  |   F  |   P  |   B  |   J  |   L  |   U  |   Y  |   ;  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Esc  |   A  |   R  |   S  |   T  |   G  |   M  |   N  |   E  |   I  |   O  |  "   |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   D  |   V  |   K  |   H  |   ,  |   .  |   ↲  |   ⇧  |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  FN  | lngs |   ⌃  |   ⌥  |   ⌘  |   ⇧  | space|   ↙︎  | ↗︎ /← |   ↓  |   ↑  |   →  |
- * `-----------------------------------------------------------------------------------'
- */
-[_COLEMAK_DH] = LAYOUT_preonic_grid(
-    PRV_TAB, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    NXT_TAB,
-    OPT_TAB, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-    CTL_ESC, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_ENT,  KC_RSFT,
-    FN_GRV,  LANG_SW, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, KC_SPC,  LOWER,   LFT_RSE, KC_DOWN, KC_UP,   KC_RGHT
+    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    PRV_TAB, NXT_TAB, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
+    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_LBRC, KC_RBRC, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  
+    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_MINS, KC_EQL,  KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,
+    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_GRV,  KC_QUOT, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
+    FN_TAB,  CTL_ESC, KC_LALT, KC_LGUI, SHT_ENT, SHT_ENT, KC_SPC,  KC_SPC,  LOWER,   RAISE,   LANG_SW, KC_BSPC
 ),
 
 
 /* Lower
- * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |   !  |   @  |   {  |   }  |   %  |   ^  |  &   |  *   |   -  |   =  | TRNS |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |   ?  |   $  |   (  |   )  |   <  |   >  | Left | Down |  Up  |Right |   `  |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |   /  |   #  |   [  |   ]  |   ~  |   \  |  ¨   |  |   |   _  |   +  |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |      | TRNS | TRNS | TRNS | TRNS | TRNS | TRNS |      |      |      |      |
- * `-----------------------------------------------------------------------------------'
+ * ,-----------------------------------------------------------------------------------------------.
+ * |       |       |       |       |       |       |       |       |       |       |       |       |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * |   !   |   @   |   {   |   }   |   %   |       |       |   ^   |  &    |  *    |   -   |   =   |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * |   ?   |   $   |   (   |   )   |   <   |       |       |   >   |   ←   |   ↓   |   ↑   |   →   |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * |   /   |   #   |   [   |   ]   |   ~   |       |       |   \   |  ¨    |  |    |   _   |   +   |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  |
+ * `-----------------------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid(
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    _______, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_MINS, KC_EQL,  _______,
-    _______, KC_QUES, KC_DLR,  KC_LPRN, KC_RPRN, KC_LT,   KC_GT,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_GRV,
-    _______, KC_SLSH, KC_HASH, KC_LBRC, KC_RBRC, KC_TILD, KC_BSLS, UMLAUT,  KC_PIPE, KC_UNDS, KC_PLUS, XXXXXXX,
-    _______, XXXXXXX, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PERC, XXXXXXX, XXXXXXX, KC_CIRC, KC_AMPR, KC_ASTR, KC_MINS, KC_EQL,
+    KC_QUES, KC_DLR,  KC_LPRN, KC_RPRN, KC_LT,   XXXXXXX, XXXXXXX, KC_GT,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
+    KC_SLSH, KC_HASH, KC_LBRC, KC_RBRC, KC_TILD, XXXXXXX, XXXXXXX, KC_BSLS, UMLAUT,  KC_PIPE, KC_UNDS, KC_PLUS,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
 /* Raise
- * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  | F10  | TRNS |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |      |      |      |      |      |      |      |      |      | TRNS | TRNS |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |      | TRNS | TRNS | TRNS | TRNS | TRNS |      | TRNS |      |      |      |
- * `-----------------------------------------------------------------------------------'
+ * ,-----------------------------------------------------------------------------------------------.
+ * |       |       |       |       |       |       |       |       |       |       |       |       |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * |       |       |       |       |       |       |       |       |   7   |   8   |   9   |       |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * |       |       |       |       |       |       |       |       |   4   |   5   |   6   |   0   |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * |       |       |       |       |       |       |       |       |   1   |   2   |   3   |       |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  |
+ * `-----------------------------------------------------------------------------------------------'
   */
 [_RAISE] = LAYOUT_preonic_grid(
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
-    _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    XXXXXXX,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______,
-    _______, XXXXXXX, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    KC_0,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
 /* FN Layer
- * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |reset |  F11 |  F12 |  F13 |  F14 |      |      |      |      |      |      | del  |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |      |      |  ⇧⌘3 |  ⇧⌘4 |      |      |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS | prev | pause| next | mute | vol- | vol+ |      |      |      |brgh- |brgh+ |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TRNS |      | TRNS | TRNS | TRNS | TRNS | TRNS |raiseT|lowerT|      |COLEM |QWERT |
- * `-----------------------------------------------------------------------------------'
- */
+ * ,-----------------------------------------------------------------------------------------------.
+ * |       |       |       |       |       |       |       |       |       |       |       |       |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * | reset |  F7   |  F8   |  F9   |  F10  |  F11  |  F12  |       |       |       |       |  RGB  |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * |  ⇧⌘4  |  F4   |  F5   |  F6   | mute  | vol-  | vol+  |       |       |       |       | brgh+ |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * |       |  F1   |  F2   |  F3   | pause | prev  | next  |       |       |       |       | brgh- |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  |
+ * `-----------------------------------------------------------------------------------------------'
+  */
 [_FN] = LAYOUT_preonic_grid(
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    RESET,   KC_F11,  KC_F12,  KC_F13,  KC_F14,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,
-    _______, XXXXXXX, XXXXXXX, CMD_S_3, CMD_S_4, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG,
-    _______, KC_VOLD, KC_MUTE, KC_VOLU, KC_MPLY, KC_MPRV, KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX, KC_BRID, KC_BRIU,
-    _______, XXXXXXX, _______, _______, _______, KC_ENT,  _______, LOWER_T, RAISE_T, XXXXXXX, T_COLEM, T_QWERT
+    RESET,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG,
+    CMD_S_4, KC_F4,   KC_F5,   KC_F6,   KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BRIU,
+    XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_MPLY, KC_MPRV, KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BRID,
+    _______, _______, _______, _______, KC_LSFT, KC_LSFT, _______, _______, _______, _______, _______, KC_DEL
 )
 
 };
+
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case FOO:
+      if (record->event.pressed) {
+        // Do something when pressed
+        println("foo pressed");
+      } else {
+        // Do something else when release
+        println("foo released");
+      }
+      return false; // Skip all further processing of this key
+    case KC_ENTER:
+      // Play a tone when enter is pressed
+      if (record->event.pressed) {
+        println("enter pressed");
+      }
+      return true; // Let QMK send the enter press/release events
+    default:
+      return true; // Process all other keycodes normally
+  }
+}
+
+
 
 #ifdef RGBLIGHT_ENABLE
 

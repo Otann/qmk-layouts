@@ -2,49 +2,60 @@
 
 My layouts for Planck, Preonic and Drop Alt
 
+## Observations
+
+- Left thumb is responsible for major key combinations
+  - Mostly they are based on CMD
+  - Occasionally they include shift, rarely opt or control
+  - Context-switchng
+    - CMD-TAB
+    - CMD-` (CMD-SHIFT-TAB)
+    - CTRL-TAB
+- Right hand is responsible for navigation around text and text selection
+  - OPT for skipping words
+  - CMD for going to line start and end
+  - SHIFT+OPT for quick selection
+  - SHIFT+CMD for whole line
+  - That means left hand need to hold two modifiers
+- Mark the home position for thumb with reversed keycaps, it is confusing for the thumb to be positioned properly.
+
 ## Principles for the layout design
 
-- Preonic is just extended Planck for learning cureve and more confidence with typing passwords
-  - do not put anything essential on the top row
-  - do not rely on muscle memory for the top row  
-- Do not share keys between hands: right thumb is space, left is shift
-- _Not about layout, but still:_ mark the home position for thumb with keycaps, it is confusing with more than 2 similar keys per thumb.
-- Keep Mac OS modifiers on the left hand to do shortcuts with right hand on the mouse/touchpad
+- Do not share a key between hands, use to grid layout
+- Make all Mac OS modifiers available for on the left hand to do shortcuts when right hand on the mouse/touchpad
 - Mirror modifiers on left-most coolumn to allow thumb-pinkey-letter combos like `⌘⌥c` or `⌘⌃g`
-- Modifiers on the left side, layers on the right.
-- Arrows are most used non-letter keys, so they are on the most accessible position – layer next to space, under home position
-- Symbols are needed more frequently than number, so they take same most accessible layer
-- Parenthesis on the strongest position for left hand (2nd and 3rd fingers)
-- Allow inward rolls (`()`, `{}`, `->`, `=>`)
-- Symbols from left half (from numbers 1-4) fill left side
-- Keep some mnemonics
-  - `&` and `*` are together
-  - `-` and `=` are toghther
-  - `_` and `+` are togither and "under" the `-` and `=`
-- Raised layer is for numbers on home row and fn-numbers
-- Avoid any double-function keys on thumbs (different behavios for on tap/on hold)
+- Left thumb home position is optimised for modifiers with CMD, right thumb position for layer with symbols
+- Arrows are most used non-letter keys, put them on the most accessible position, right thumb layer & home row
+- Symbols are needed more frequently than number, so they take same most accessible layer with right thumb
+- Numbers to be typed with one hand, so layer key is also on the left for number layer
+  - Home row for most used numbers: 0, 1, 2, 3
+- Don't do any tap-dance or double-function to thumb keys
 - Bonus point: have a dedicated key for switching language
 
+- Preonic is just extended Planck for smoother learning curve and more confidence with typing passwords
+  - do not put anything essential on the top row
+  - do not rely on muscle memory for the top row
 
-### Historical observations
+### Learning curve
 
+The best ergonomic benefit I got out of this is using arrows for navigating without leaving the home row.
 It took me some months to finally give up on T-shaped arrows. Firstly I've put them on the most-accessible
-layer, where most-used keys are and whick is closest to the space for the thumb (lower in my case). I kept
-the classic arrows on the bottom-right and used the mostly when the right hand was movign from mouse to
-keyboard. Slowly I developed the muscle memory for the flattened arrows, which freed up one easily-accessible
+layer, where most-used keys are and which is closest to the big space key for the thumb (lower in my case). I kept
+the classic arrows on the bottom-right for backup and used the mostly when the right hand was movign from mouse to
+keyboard. Slowly I developed the muscle memory for the home row arrows, which freed up one easily-accessible
 key for the pinkey, where the up previously was. That turned to be the ideal place for the `enter`, as 
 stretching little finger to the right, where the default is apparently too tiring for my hand.
-
-Raise/lower around the space confuses my brain
+Later I found an even better place for it when I moved the raise layer to the left thumb. That allowed me to place `[` and `]` there, which is used for `х` and `ъ` in Russian layout.
 
 ### Planck
 
-Planck layout is also an experimental playground for trying new ideas.
-So it may be a little bit different or ahead of preonic.
+Planck is my main keyboard, which I use daily. 
 
 ![planck](/planck/wallpaper.png)
 
 ### Preonic
+
+This is for experimental features or crazy ideas to try out, like trying an ergo layout and moving two hands further apart.
 
 ![preonic](/preonic/wallpaper.png)
 
