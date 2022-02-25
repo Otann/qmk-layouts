@@ -29,12 +29,11 @@ My layouts for Planck, Preonic and Drop Alt
 - Symbols are needed more frequently than number, so they take same most accessible layer with right thumb
 - Numbers to be typed with one hand, so layer key is also on the left for number layer
   - Home row for most used numbers: 0, 1, 2, 3
+  - Trying a reverse layout, since for some reason it made more sense somehow
 - Don't do any tap-dance or double-function to thumb keys
 - Bonus point: have a dedicated key for switching language
-
-- Preonic is just extended Planck for smoother learning curve and more confidence with typing passwords
-  - do not put anything essential on the top row
-  - do not rely on muscle memory for the top row
+- Preonic is for experimental ideas
+  - do not put anything essential on the top row, so the whole layout could be ported back to planck
 
 ### Learning curve
 
@@ -45,7 +44,7 @@ the classic arrows on the bottom-right for backup and used the mostly when the r
 keyboard. Slowly I developed the muscle memory for the home row arrows, which freed up one easily-accessible
 key for the pinkey, where the up previously was. That turned to be the ideal place for the `enter`, as 
 stretching little finger to the right, where the default is apparently too tiring for my hand.
-Later I found an even better place for it when I moved the raise layer to the left thumb. That allowed me to place `[` and `]` there, which is used for `х` and `ъ` in Russian layout.
+Later I found an even better place for it when I moved the raise layer to the left thumb. That allowed me to place `[` and `]` there, which is used for `х` (ha) and `ъ` in Russian layout.
 
 ### Planck
 
