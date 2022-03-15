@@ -8,6 +8,7 @@ enum planck_layers {
   _COLEMAK_DH,
   _LOWER,
   _RAISE,
+  _ADJUST,
   _FN
 };
 
@@ -21,9 +22,11 @@ enum planck_layers {
 #define FN MO(_FN)
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
+#define ADJUST MO(_ADJUST)
 #define LOWER_T TG(_LOWER)
 #define RAISE_T TG(_RAISE)
 #define ENT_RSE LT(_RAISE, KC_ENT)
+#define CMD_RSE LM(_RAISE, MOD_RGUI)
 
 #define T_QWERT DF(_QWERTY)
 #define T_COLEM DF(_COLEMAK_DH)
@@ -85,9 +88,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
  * | tab/⌃ |   A   |   R   |   S   |   T   |   G   |   M   |   N   |   E   |   I   |   O   |   "   |
  * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
- * |   `/⇧ |   Z   |   X   |   C   |   D   |   V   |   K   |   H   |   ,   |   .   |   ↲   |  lng  |
+ * |   `/⇧ |   Z   |   X   |   C   |   D   |   V   |   K   |   H   |   ,   |   .   |   [   |   ]   |
  * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
- * |  FN   |   ↲   |   ⌫   |   ↗︎   |   ⌘   |   ⇧   | space |   ↙︎   |   ↲   |   ⌥   |   ⌃   | lng   |
+ * |  FN   |   ↲   |   ⌫   |   ↗︎   |   ⌘   |   ⇧   | space |   ↙︎   |   ↲   |   ⌥   |   ⌃   |  lng  |
  * `-----------------------------------------------------------------------------------------------'
  */
 [_COLEMAK_DH] = LAYOUT_planck_grid(
@@ -112,25 +115,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_TILD, KC_AMPR, KC_ASTR, KC_PIPE, KC_LT,   KC_GT,   KC_UNDS, KC_PLUS, KC_MINS, KC_EQL,  _______,
     _______, KC_QUES, KC_EXLM, KC_AT,   KC_HASH, KC_LPRN, KC_RPRN, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_GRV,
     _______, KC_SLSH, KC_DLR,  KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, UMLAUT,  KC_LPRN, KC_RPRN, KC_BSLS, XXXXXXX,
-    XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX, _______, _______, _______, _______
+    XXXXXXX, _______, _______, ADJUST,  _______, _______, _______, XXXXXXX, _______, _______, _______, _______
 ),
 
 /* Raise
  * ,-----------------------------------------------------------------------------------------------.
- * | TRNS  |       |   7   |   8   |   9   |       |       |       |       |       |       |       |
+ * | TRNS  |  tab  |   7   |   8   |   9   |       |       |       |       |       |       |       |
  * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
- * | TRNS  |   0   |   1   |   2   |   3   |   .   |       |  ⌥ ←  |       |       |  ⌥ →  |       |
+ * | TRNS  |   0   |   1   |   2   |   3   |   .   |       |       |       |       |       |       |
  * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
- * | TRNS  | ⌃ tab |   4   |   5   |   6   |   ,   |       |       |       |       |       |       |
+ * | TRNS  |       |   4   |   5   |   6   |   ,   |       |       |       |       |       |       |
  * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
  * |       | TRNS  | TRNS  |       | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  | TRNS  |
  * `-----------------------------------------------------------------------------------------------'
   */
 [_RAISE] = LAYOUT_planck_grid(
-    _______, XXXXXXX, KC_7,    KC_8,    KC_9,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-    _______, KC_0,    KC_1,    KC_2,    KC_3,    KC_DOT,  XXXXXXX, OP_LEFT, XXXXXXX, XXXXXXX, OP_RGHT, XXXXXXX,
+    _______, KC_TAB,  KC_7,    KC_8,    KC_9,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    _______, KC_0,    KC_1,    KC_2,    KC_3,    KC_DOT,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     _______, LCTLTAB, KC_4,    KC_5,    KC_6,    KC_COMM, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, _______, _______, XXXXXXX, _______, _______, _______, _______, _______, _______, _______, _______
+    XXXXXXX, _______, _______, XXXXXXX, _______, _______, _______, ADJUST,  _______, _______, _______, _______
+),
+
+/* ADJUST
+ * ,-----------------------------------------------------------------------------------------------.
+ * | TRNS  |       |  ⌘ 7  |  ⌘ 8  |  ⌘ 9  |       |       |       |       |       |       |  ⌥ ⌫  |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * | TRNS  |  ⌘ 0  |  ⌘ 1  |  ⌘ 2  |  ⌘ 3  |       |       |  ⌥ ←  |       |       |  ⌥ →  |       |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * | TRNS  |       |  ⌘ 4  |  ⌘ 5  |  ⌘ 6  |       |       |       |       |       |       |       |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
+ * |       | TRNS  | TRNS  |       | TRNS  | TRNS  | TRNS  |       | TRNS  | TRNS  | TRNS  | TRNS  |
+ * `-----------------------------------------------------------------------------------------------'
+  */
+[_ADJUST] = LAYOUT_planck_grid(
+    _______, XXXXXXX, G(KC_7), G(KC_8), G(KC_9), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, OP_BSPC,
+    _______, G(KC_0), G(KC_1), G(KC_2), G(KC_3), XXXXXXX, XXXXXXX, OP_LEFT, XXXXXXX, XXXXXXX, OP_RGHT, XXXXXXX,
+    _______, XXXXXXX, G(KC_4), G(KC_5), G(KC_6), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, _______, _______, XXXXXXX, _______, _______, _______, XXXXXXX, _______, _______, _______, _______
 ),
 
 /* FN Layer
