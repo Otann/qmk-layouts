@@ -42,13 +42,13 @@ It took me some months to finally give up on T-shaped arrows. Firstly I've put t
 layer, where most-used keys are and which is closest to the big space key for the thumb (lower in my case). I kept
 the classic arrows on the bottom-right for backup and used the mostly when the right hand was movign from mouse to
 keyboard. Slowly I developed the muscle memory for the home row arrows, which freed up one easily-accessible
-key for the pinkey, where the up previously was. That turned to be the ideal place for the `enter`, as 
+key for the pinkey, where the up previously was. That turned to be the ideal place for the `enter`, as
 stretching little finger to the right, where the default is apparently too tiring for my hand.
 Later I found an even better place for it when I moved the raise layer to the left thumb. That allowed me to place `[` and `]` there, which is used for `х` (ha) and `ъ` in Russian layout.
 
-### Planck
+### Planck & Technik
 
-Planck is my main keyboard, which I use daily. 
+Planck is my main keyboard, which I use daily.
 
 ![planck](/planck/wallpaper.png)
 
@@ -74,31 +74,37 @@ It also takes much more space than planck or preonic, while them not causing any
 _note: replace the username in the every path with your own_
 
 1. Install QMK following the [official guide](https://docs.qmk.fm/#/newbs_getting_started)
+
 ```shell
 brew install qmk/qmk/qmk
 
 ```
+
 2. Setup the qmk, there is an option to provide custom location for the cloned git repo
+
 ```shell
 qmk setup -H ~/Dev/repos/otann/qmk_firmware
 
 ```
 
 3. Link the layouts to the corresponding folders
+
 ```
 $ ln -s ~/Dev/repos/otann/qmk_layouts/preonic ~/Dev/repos/otann/qmk_firmware/keyboards/preonic/keymaps/otann
 $ ln -s ~/Dev/repos/otann/qmk_layouts/planck ~/Dev/repos/otann/qmk_firmware/keyboards/planck/keymaps/otann
+$ ln -s ~/Dev/repos/otann/qmk_layouts/tecknik ~/Dev/repos/otann/qmk_firmware/keyboards/boardsource/technik_o/keymaps/otann
 $ ln -s ~/Dev/repos/otann/qmk_layouts/kyria ~/Dev/repos/otann/qmk_firmware/keyboards/kyria/keymaps/otann
 ```
 
 4. Build the firmware
-```shell
-$ qmk compile -kb preonic/rev3 -km otann
 
+```shell
+$ qmk compile -kb planck/rev3 -km otann
+;; or
+$ qmk compile -kb boardsource/teckhik_o -km otann
 ```
 
 5. Flash using the [QMK Toolbox app](https://github.com/qmk/qmk_toolbox/releases)
-
 
 ## Notes
 
