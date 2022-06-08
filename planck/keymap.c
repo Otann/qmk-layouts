@@ -103,37 +103,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower
  * ,-----------------------------------------------------------------------------------------------.
- * | TRNS  |   ~   |   |   |   *   |   &   |   <   |   >   |   _   |   +   |   -   |   =   |  ⌥ ⌫  |
+ * | TRNS  |   ?   |   &   |   *   |   |   |   <   |   >   |   _   |   +   |   -   |   =   |  ⌥ ⌫  |
  * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
- * | TRNS  |   ?   |   #   |   @   |   !   |   (   |   )   |   ←   |   ↓   |   ↑   |   →   |   `   |
+ * |   å   |   !   |   @   |   #   |   $   |   (   |   )   |   ←   |   ↓   |   ↑   |   →   |   `   |
  * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
- * | TRNS  |   /   |   ^   |   %   |   $   |   [   |   ]   |   ¨   |   {   |   }   |   \   |       |
+ * | TRNS  |   /   |   ~   |   ^   |   %   |   [   |   ]   |   ¨   |   {   |   }   |   \   |       |
  * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
  * |       | TRNS  | TRNS  |   ↘︎   | TRNS  | TRNS  | TRNS  |       | TRNS  | TRNS  | TRNS  | TRNS  |
  * `-----------------------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_planck_grid(
-    _______, KC_TILD, KC_PIPE, KC_ASTR, KC_AMPR, KC_LT,   KC_GT,   KC_UNDS, KC_PLUS, KC_MINS, KC_EQL,  _______,
-    _______, KC_QUES, KC_HASH, KC_AT,   KC_EXLM, KC_LPRN, KC_RPRN, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_GRV,
-    _______, KC_SLSH, KC_CIRC, KC_PERC, KC_DLR,  KC_LBRC, KC_RBRC, UMLAUT,  KC_LCBR, KC_RCBR, KC_BSLS, XXXXXXX,
+    _______, KC_QUES, KC_AMPR, KC_ASTR, KC_PIPE, KC_LT,   KC_GT,   KC_UNDS, KC_PLUS, KC_MINS, KC_EQL,  _______,
+    A_RING,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_GRV,
+    _______, KC_SLSH, KC_TILD, KC_CIRC, KC_PERC, KC_LBRC, KC_RBRC, UMLAUT,  KC_LCBR, KC_RCBR, KC_BSLS, XXXXXXX,
     XXXXXXX, _______, _______, RAISE,   _______, _______, _______, XXXXXXX, _______, _______, _______, _______
 ),
 
 /* Raise
  * ,-----------------------------------------------------------------------------------------------.
- * | TRNS  |  tab  |   9   |   8   |   7   |       |       |   7   |   8   |   9   |       | TRNS  |
+ * | TRNS  |   6   |   7   |   8   |   9   |   0   |       |   7   |   8   |   9   |       | TRNS  |
  * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
- * | TRNS  |   0   |   3   |   2   |   1   |   .   |       |   1   |   2   |   3   |   0   |       |
+ * | TRNS  |   1   |   2   |   3   |   4   |   5   |       |   1   |   2   |   3   |   0   |       |
  * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
- * | TRNS  |   å   |   6   |   5   |   4   |   ,   |       |   4   |   5   |   6   |       |       |
+ * | TRNS  |   .   |       |       |   ,   |       |       |   4   |   5   |   6   |       |       |
  * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------|
  * |       | TRNS  | TRNS  |       | TRNS  | TRNS  | TRNS  |   ↘︎   | TRNS  | TRNS  | TRNS  | TRNS  |
  * `-----------------------------------------------------------------------------------------------'
   */
 [_RAISE] = LAYOUT_planck_grid(
-    _______, KC_TAB,  KC_9,    KC_8,    KC_7,    XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    XXXXXXX, OP_BSPC,
-    _______, KC_0,    KC_3,    KC_2,    KC_1,    KC_DOT,  XXXXXXX, KC_1,    KC_2,    KC_3,    KC_0,    XXXXXXX,
-    _______, A_RING,  KC_6,    KC_5,    KC_4,    KC_COMM, XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX, XXXXXXX,
+    _______, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    XXXXXXX, KC_7,    KC_8,    KC_9,    XXXXXXX, OP_BSPC,
+    _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX, KC_1,    KC_2,    KC_3,    KC_0,    XXXXXXX,
+    _______, KC_DOT,  XXXXXXX, XXXXXXX, KC_COMM, XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX, XXXXXXX,
     LCTLTAB, _______, _______, XXXXXXX, _______, _______, _______, LOWER,   _______, _______, _______, _______
 ),
 
