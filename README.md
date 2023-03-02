@@ -99,7 +99,7 @@ $ ln -s ~/Dev/repos/otann/qmk_layouts/kyria ~/Dev/repos/otann/qmk_firmware/keybo
 4. Build the firmware
 
 ```shell
-$ qmk compile -kb planck/rev3 -km otann
+$ qmk compile -kb planck/rev6 -km otann
 ;; or
 $ qmk compile -kb boardsource/teckhik_o -km otann
 ```
