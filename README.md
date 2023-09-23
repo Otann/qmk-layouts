@@ -92,7 +92,7 @@ qmk setup -H ~/Dev/repos/otann/qmk_firmware
 ```
 $ ln -s ~/Dev/repos/otann/qmk_layouts/preonic ~/Dev/repos/otann/qmk_firmware/keyboards/preonic/keymaps/otann
 $ ln -s ~/Dev/repos/otann/qmk_layouts/planck ~/Dev/repos/otann/qmk_firmware/keyboards/planck/keymaps/otann
-$ ln -s ~/Dev/repos/otann/qmk_layouts/tecknik ~/Dev/repos/otann/qmk_firmware/keyboards/boardsource/technik_o/keymaps/otann
+$ ln -s ~/Dev/repos/otann/qmk_layouts/technik ~/Dev/repos/otann/qmk_firmware/keyboards/boardsource/technik_o/keymaps/otann
 $ ln -s ~/Dev/repos/otann/qmk_layouts/kyria ~/Dev/repos/otann/qmk_firmware/keyboards/kyria/keymaps/otann
 ```
 
@@ -108,4 +108,4 @@ $ qmk compile -kb boardsource/teckhik_o -km otann
 
 ## Notes
 
-The puthon installation may fail, in that case installing virtualenv and getting the python `3.9.6` may help
+The python installation may fail, in that case installing virtualenv and getting the python `3.9.6` may help
